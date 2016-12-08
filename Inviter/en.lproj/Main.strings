@@ -1,0 +1,42 @@
+
+/* Class = "UIButton"; normalTitle = "Receber SMS"; ObjectID = "3up-QG-ve0"; */
+"3up-QG-ve0.normalTitle" = "Receber SMS";
+
+/* Class = "UILabel"; text = "Inviter"; ObjectID = "63d-Z9-c7j"; */
+"63d-Z9-c7j.text" = "Inviter";
+
+/* Class = "UITextField"; placeholder = "Informe seu celular"; ObjectID = "66r-Vu-Moh"; */
+"66r-Vu-Moh.placeholder" = "Informe seu celular";
+
+/* Class = "UIButton"; normalTitle = "Entrar"; ObjectID = "7iZ-yc-X3V"; */
+"7iZ-yc-X3V.normalTitle" = "Entrar";
+
+/* Class = "UILabel"; text = "10:00"; ObjectID = "Dnn-ZS-bi8"; */
+"Dnn-ZS-bi8.text" = "10:00";
+
+/* Class = "UILabel"; text = "Descricao"; ObjectID = "F5m-Rx-WZm"; */
+"F5m-Rx-WZm.text" = "Descricao";
+
+/* Class = "UITabBarItem"; title = "Novo"; ObjectID = "HAU-mF-cRi"; */
+"HAU-mF-cRi.title" = "Novo";
+
+/* Class = "UITextField"; placeholder = "Informe o código SMS recebido"; ObjectID = "TFV-Ob-GQi"; */
+"TFV-Ob-GQi.placeholder" = "Informe o código SMS recebido";
+
+/* Class = "UILabel"; text = "Local"; ObjectID = "bhP-T2-0Q2"; */
+"bhP-T2-0Q2.text" = "Local";
+
+/* Class = "UILabel"; text = "Evento"; ObjectID = "fND-SJ-bap"; */
+"fND-SJ-bap.text" = "Evento";
+
+/* Class = "UITextField"; placeholder = "Local"; ObjectID = "kX9-rL-RUb"; */
+"kX9-rL-RUb.placeholder" = "Local";
+
+/* Class = "UILabel"; text = "10/10/2016"; ObjectID = "pPd-OH-vWI"; */
+"pPd-OH-vWI.text" = "10/10/2016";
+
+/* Class = "UIButton"; normalTitle = "Salvar"; ObjectID = "tQy-Hl-XzX"; */
+"tQy-Hl-XzX.normalTitle" = "Salvar";
+
+/* Class = "UITextField"; placeholder = "Descrição"; ObjectID = "tng-dP-MAS"; */
+"tng-dP-MAS.placeholder" = "Descrição";
