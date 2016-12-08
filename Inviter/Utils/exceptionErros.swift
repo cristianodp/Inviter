@@ -12,4 +12,5 @@ enum exceptionErros:Error {
     case LOGIN_INVALIDO
     case GENERIC_ERRO(String)
     
+    
 }

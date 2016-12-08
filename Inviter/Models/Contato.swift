@@ -14,4 +14,5 @@ class Contato :NSObject{
     var nome: String?
     var idUsuario: String?
     
+    
 }

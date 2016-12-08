@@ -108,4 +108,5 @@ class Evento :NSObject{
         return dic as  [String : Any]
     }
     
+    
 }

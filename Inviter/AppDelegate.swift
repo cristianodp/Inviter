@@ -11,7 +11,6 @@ import Firebase
 import Fabric
 import DigitsKit
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

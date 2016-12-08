@@ -24,5 +24,6 @@ class AlertSimpleDialog{
         
         alertController.addAction(defaultAction)
         sender.present(alertController, animated: true, completion: nil)
+        
     }
 }

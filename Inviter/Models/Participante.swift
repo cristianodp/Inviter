@@ -56,4 +56,5 @@ class Participante :NSObject{
         return dic as  [String : Any]
     }
     
+    
 }
