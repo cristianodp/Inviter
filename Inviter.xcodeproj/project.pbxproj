@@ -17,10 +17,17 @@
 		4E1223D91DF4EF0E00B569F0 /* EventoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1223D81DF4EF0E00B569F0 /* EventoViewController.swift */; };
 		4E1223DB1DF4F73400B569F0 /* Contato.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1223DA1DF4F73400B569F0 /* Contato.swift */; };
 		4E1223E11DF5048200B569F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E1223DF1DF5048200B569F0 /* Main.storyboard */; };
+		4E46A8BD1DF8F37800A96BCE /* EventosControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E46A8BC1DF8F37800A96BCE /* EventosControls.swift */; };
+		4E46A8C51DFA222700A96BCE /* ContatoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E46A8C41DFA222700A96BCE /* ContatoViewController.swift */; };
 		4E544DC01DBD9646006C3A2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E544DBF1DBD9646006C3A2D /* AppDelegate.swift */; };
 		4E544DC71DBD9646006C3A2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E544DC61DBD9646006C3A2D /* Assets.xcassets */; };
 		4E544DCA1DBD9646006C3A2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E544DC81DBD9646006C3A2D /* LaunchScreen.storyboard */; };
 		4E8745641DF8CE5700F7D015 /* EventoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8745631DF8CE5700F7D015 /* EventoTableViewController.swift */; };
+		4ECCB13E1E094F3700C4F356 /* ContatosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECCB13D1E094F3700C4F356 /* ContatosViewController.swift */; };
+		4ECCB1401E09503700C4F356 /* extensionsFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECCB13F1E09503700C4F356 /* extensionsFile.swift */; };
+		4ECCB1421E0950E600C4F356 /* ContatoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECCB1411E0950E600C4F356 /* ContatoTableViewCell.swift */; };
+		4ECCB1461E0AC21200C4F356 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECCB1451E0AC21200C4F356 /* Usuario.swift */; };
+		4EE4C9F41DFC1DB500BDF5ED /* ConvidadosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE4C9F31DFC1DB500BDF5ED /* ConvidadosViewController.swift */; };
 		4EE7F7EE1DBEEB9B001273FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EE7F7ED1DBEEB9B001273FF /* GoogleService-Info.plist */; };
 		EBBD9944038FF38505E08118 /* Pods_Inviter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C075E853597F657A80C8639 /* Pods_Inviter.framework */; };
 /* End PBXBuildFile section */
@@ -37,12 +44,20 @@
 		4E1223D81DF4EF0E00B569F0 /* EventoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventoViewController.swift; sourceTree = "<group>"; };
 		4E1223DA1DF4F73400B569F0 /* Contato.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contato.swift; sourceTree = "<group>"; };
 		4E1223E01DF5048200B569F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4E46A8B81DF8EE4500A96BCE /* Inviter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Inviter.entitlements; sourceTree = "<group>"; };
+		4E46A8BC1DF8F37800A96BCE /* EventosControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventosControls.swift; sourceTree = "<group>"; };
+		4E46A8C41DFA222700A96BCE /* ContatoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContatoViewController.swift; sourceTree = "<group>"; };
 		4E544DBC1DBD9646006C3A2D /* Inviter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inviter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E544DBF1DBD9646006C3A2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E544DC61DBD9646006C3A2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E544DC91DBD9646006C3A2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E544DCB1DBD9646006C3A2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E8745631DF8CE5700F7D015 /* EventoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventoTableViewController.swift; sourceTree = "<group>"; };
+		4ECCB13D1E094F3700C4F356 /* ContatosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContatosViewController.swift; sourceTree = "<group>"; };
+		4ECCB13F1E09503700C4F356 /* extensionsFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensionsFile.swift; sourceTree = "<group>"; };
+		4ECCB1411E0950E600C4F356 /* ContatoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContatoTableViewCell.swift; sourceTree = "<group>"; };
+		4ECCB1451E0AC21200C4F356 /* Usuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
+		4EE4C9F31DFC1DB500BDF5ED /* ConvidadosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvidadosViewController.swift; sourceTree = "<group>"; };
 		4EE7F7ED1DBEEB9B001273FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76744D1BAB516CEB739EF446 /* Pods-Inviter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inviter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Inviter/Pods-Inviter.release.xcconfig"; sourceTree = "<group>"; };
 		7C075E853597F657A80C8639 /* Pods_Inviter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inviter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +81,7 @@
 				4E1223C51DF4EE7100B569F0 /* Evento.swift */,
 				4E1223C61DF4EE7100B569F0 /* Participante.swift */,
 				4E1223DA1DF4F73400B569F0 /* Contato.swift */,
+				4ECCB1451E0AC21200C4F356 /* Usuario.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -74,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				4E1223C81DF4EE7100B569F0 /* AlertSimpleDialog.swift */,
+				4ECCB13F1E09503700C4F356 /* extensionsFile.swift */,
 				4E1223C91DF4EE7100B569F0 /* exceptionErros.swift */,
 			);
 			path = Utils;
@@ -82,6 +99,7 @@
 		4E1223CA1DF4EE7100B569F0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4E46A8C31DFA220600A96BCE /* Contatos */,
 				4E1223CE1DF4EE7100B569F0 /* Login */,
 				4E1223CB1DF4EE7100B569F0 /* ListaEventos */,
 				4E1223D71DF4EEC900B569F0 /* Evento */,
@@ -111,10 +129,29 @@
 			children = (
 				4E1223D81DF4EF0E00B569F0 /* EventoViewController.swift */,
 				4E8745631DF8CE5700F7D015 /* EventoTableViewController.swift */,
+				4EE4C9F31DFC1DB500BDF5ED /* ConvidadosViewController.swift */,
+				4ECCB13D1E094F3700C4F356 /* ContatosViewController.swift */,
+				4ECCB1411E0950E600C4F356 /* ContatoTableViewCell.swift */,
 			);
 			name = Evento;
 			path = Inviter/Views/Evento;
 			sourceTree = SOURCE_ROOT;
+		};
+		4E46A8BB1DF8F34E00A96BCE /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				4E46A8BC1DF8F37800A96BCE /* EventosControls.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		4E46A8C31DFA220600A96BCE /* Contatos */ = {
+			isa = PBXGroup;
+			children = (
+				4E46A8C41DFA222700A96BCE /* ContatoViewController.swift */,
+			);
+			path = Contatos;
+			sourceTree = "<group>";
 		};
 		4E544DB31DBD9646006C3A2D = {
 			isa = PBXGroup;
@@ -137,6 +174,8 @@
 		4E544DBE1DBD9646006C3A2D /* Inviter */ = {
 			isa = PBXGroup;
 			children = (
+				4E46A8B81DF8EE4500A96BCE /* Inviter.entitlements */,
+				4E46A8BB1DF8F34E00A96BCE /* Controls */,
 				4E1223C41DF4EE7100B569F0 /* Models */,
 				4E1223C71DF4EE7100B569F0 /* Utils */,
 				4E1223CA1DF4EE7100B569F0 /* Views */,
@@ -206,6 +245,11 @@
 						DevelopmentTeam = JWDFV35R69;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -312,12 +356,19 @@
 				4E1223D01DF4EE7100B569F0 /* Evento.swift in Sources */,
 				4E544DC01DBD9646006C3A2D /* AppDelegate.swift in Sources */,
 				4E1223D61DF4EE7100B569F0 /* LoginViewController.swift in Sources */,
+				4ECCB13E1E094F3700C4F356 /* ContatosViewController.swift in Sources */,
 				4E8745641DF8CE5700F7D015 /* EventoTableViewController.swift in Sources */,
 				4E1223D91DF4EF0E00B569F0 /* EventoViewController.swift in Sources */,
 				4E1223D41DF4EE7100B569F0 /* EventoCollectionViewCell.swift in Sources */,
+				4E46A8C51DFA222700A96BCE /* ContatoViewController.swift in Sources */,
+				4E46A8BD1DF8F37800A96BCE /* EventosControls.swift in Sources */,
+				4EE4C9F41DFC1DB500BDF5ED /* ConvidadosViewController.swift in Sources */,
 				4E1223D11DF4EE7100B569F0 /* Participante.swift in Sources */,
+				4ECCB1421E0950E600C4F356 /* ContatoTableViewCell.swift in Sources */,
+				4ECCB1461E0AC21200C4F356 /* Usuario.swift in Sources */,
 				4E1223DB1DF4F73400B569F0 /* Contato.swift in Sources */,
 				4E1223D31DF4EE7100B569F0 /* exceptionErros.swift in Sources */,
+				4ECCB1401E09503700C4F356 /* extensionsFile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

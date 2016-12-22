@@ -14,6 +14,8 @@ class Evento :NSObject{
     var nome: String?
     var local:String?
     var data:Date?
+    var organizadorId:String?
+    var participantesID:[String] = [String]()
     
     func loadValues(data:[String:Any]){
         
@@ -38,7 +40,7 @@ class Evento :NSObject{
     func setDataString(dataString:String){
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         formatter.date(from: dataString)
         self.data = formatter.date(from: dataString)!
     }
@@ -47,7 +49,7 @@ class Evento :NSObject{
     func getDataString() -> String?{
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         //"EEEE MMMM dd, aaaa 'at' HH:mm um zz"
         //formatter.date(from: dataString)
         //formatter.date(from: dataString)!
@@ -89,7 +91,12 @@ class Evento :NSObject{
         }
         
     }
+    
+    
 
+    func addConvidado(idConvidado:String){
+        participantesID.append(idConvidado)
+    }
     
     func toDictionary()->  [String : Any]{
         
@@ -97,11 +104,14 @@ class Evento :NSObject{
         let nome = self.nome!
         let local = self.local!
         let data:String = getDataString()!
-        
+        let organizadorId:String = self.organizadorId!
+        let participantesID:[String] = self.participantesID
         let dic = [ "idEvento": id
             ,"nome": nome
             ,"local": local
             ,"data": data
+            ,"organizadorId": organizadorId
+            ,"participantesID": participantesID
             ] as [String : Any]
         
         

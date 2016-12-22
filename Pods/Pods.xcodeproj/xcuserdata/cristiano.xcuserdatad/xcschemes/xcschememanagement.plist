@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AlamofireImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GTMSessionFetcher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -19,7 +24,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>HideKeyboard.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Inviter.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ReachabilitySwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,7 +47,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>010318B750CEB29180957D46F9A6021D</key>
+		<key>0CA70047EF946036F27E2A5430323515</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,7 +57,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>75A63B7B3B714FA932CC04D594ED8147</key>
+		<key>10D8F61CB4052BE6ED13367365E0F127</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,7 +67,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9EFE4C70245EE2857D336B8B9FA4E825</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B0213E627D0A14C9FEC142337590CB0C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E0C6CE4F8FD7426A4E5E510521E40EA5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

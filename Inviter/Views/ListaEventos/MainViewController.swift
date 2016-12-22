@@ -14,17 +14,20 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
     
     var evetos = [Evento]()
     var ref : FIRDatabaseReference!
+    var ref2 : FIRDatabaseReference!
     var refHandler : UInt!
+
 
     @IBOutlet weak var table: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if !verificaSeUsuarioJaLogado() {
-            chamaTelaPrincipal(mySender: self)
+            chamaTelaLogin(mySender: self)
         }
-        
+        self.hideKeyboard()
         ref = FIRDatabase.database().reference()
+        ref2 = FIRDatabase.database().reference()
         fetchRows()
 
     }
@@ -47,7 +50,7 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
         }
     }
 
-    func chamaTelaPrincipal(mySender:AnyObject)  {
+    func chamaTelaLogin(mySender:AnyObject)  {
         performSegue(withIdentifier: "segueLogin", sender: mySender)
     }
     
@@ -60,27 +63,60 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
             _ = segue.destination as! LoginViewController
             
         }
+        if segue.identifier == "segueEventoEdite" {
+           
+            let eventoController = segue.destination as! EventoTableViewController
+            let cell = sender as! UICollectionViewCell
+            if let indexPath = self.table.indexPath(for: cell) {
+                let item = evetos[indexPath.row]
+                eventoController.keyEvento = item.idEvento
+            }
+            
+        }
+        
         
     }
     func fetchRows(){
         if let userId = FIRAuth.auth()?.currentUser?.uid{
-            refHandler = ref.child("Usuarios").child(userId).child("Eventos").observe(.childAdded, with:
+            refHandler = ref.child("Usuarios").child(userId).child("EventosUsuario").observe(.childAdded, with:
                 { (snapshot) in
                     
-                    if let dic = snapshot.value as? [String:Any]
+                    if let eventoId = snapshot.value as? String
                     {
-                        let item = Evento()
-                        item.loadValues(data: dic)
-                                                
-                        self.evetos.append(item)
                         
-                        DispatchQueue.main.async {
-                            self.table.reloadData()
-                        }
+                        self.addObserverEvento(eventoId: eventoId)
+                        
                         
                     }
             })
         }
+    }
+    
+    func addObserverEvento(eventoId:String){
+        refHandler = ref2.child("Eventos").child(eventoId).observe(.value, with:
+            { (snapshot) in
+                
+                if let dic = snapshot.value as? [String:Any]
+                {
+                    let item = Evento()
+                    item.loadValues(data: dic)
+                    
+                    if let idx = self.evetos.index(where: { (eventoFilter:Evento) -> Bool in
+                        return (eventoFilter.idEvento?.isEqual(item.idEvento))! })
+                    {
+                        self.evetos.remove(at: idx)
+                    }
+                                        
+                    self.evetos.append(item)
+                    
+                    DispatchQueue.main.async {
+                        self.table.reloadData()
+                    }
+                    
+                }
+        })
+
+    
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -95,6 +131,10 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
         
         return cell
         
+    }
+
+    @IBAction func usuarioAction(_ sender: Any) {
+        chamaTelaLogin(mySender: self)
     }
     
 }

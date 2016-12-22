@@ -12,9 +12,15 @@ target 'Inviter' do
   	pod 'Firebase/Storage'
   	pod 'Firebase/Auth'
   	pod 'Alamofire', '~> 4.0'
-  	pod 'SwiftyJSON'
+  	pod 'AlamofireImage', '~> 3.1'
+    pod 'SwiftyJSON'
   	pod 'Fabric'
   	pod 'Digits'
   	pod 'TwitterCore'
+    pod 'Crashlytics'
+    pod 'HideKeyboard'
+    pod 'ReachabilitySwift', '~> 3'
+    #pod 'ContactsPicker'
+    # pod 'SwiftAddressBook'
     
 end

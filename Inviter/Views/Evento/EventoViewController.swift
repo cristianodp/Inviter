@@ -30,7 +30,7 @@ class EventoViewController: UIViewController, UITableViewDelegate,UITableViewDat
         //cell.imageView?.image = UI
         let item = participantesList[indexPath.row]
         
-        cell.textLabel?.text = item.getParticipante()?.nome
+        cell.textLabel?.text = item.getParticipante()?.name
         
         return cell
         

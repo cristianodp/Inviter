@@ -7,12 +7,12 @@
 //
 
 import Foundation
-
+import SwiftyJSON
 class Participante :NSObject{
     
     var idParticipante: String?
     var idEvento: String?
-    var idUsuario: String?
+    var idContato: String?
     var resposta: String?
    
     func getParticipante() -> Contato?{
@@ -29,8 +29,8 @@ class Participante :NSObject{
             self.idEvento = value as? String
         }
         
-        if let value = data["idUsuario"] {
-            self.idUsuario = value as? String
+        if let value = data["idContato"] {
+            self.idContato = value as? String
         }
         
         if let value = data["resposta"] {
@@ -39,16 +39,36 @@ class Participante :NSObject{
         
     }
     
+    func loadValues(data:JSON){
+        
+        if let value = data["idParticipante"].string {
+            self.idParticipante = value
+        }
+        
+        if let value = data["idEvento"].string  {
+            self.idEvento = value
+        }
+        
+        if let value = data["idContato"].string  {
+            self.idContato = value
+        }
+        
+        if let value = data["resposta"].string  {
+            self.resposta = value 
+        }
+        
+    }
+    
     func toDictionary()->  [String : Any]{
         
         let idParticipante = self.idParticipante!
         let idEvento = self.idEvento!
-        let idUsuario = self.idUsuario!
+        let idContato = self.idContato!
         let resposta = self.resposta!
         
         let dic = [ "idParticipante": idParticipante
             ,"idEvento": idEvento
-            ,"idUsuario": idUsuario
+            ,"idContato": idContato
             ,"resposta": resposta
             ] as [String : Any]
         

@@ -10,7 +10,9 @@ import Foundation
 
 enum exceptionErros:Error {
     case LOGIN_INVALIDO
-    case GENERIC_ERRO(String)
+    case INVALID_EVENTO_ID
+    case INVALID_ORGANIZADOR_ID
+    case GENERIC_ERRO(Message:String)
     
     
 }
