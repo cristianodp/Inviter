@@ -8,13 +8,22 @@
 
 import Foundation
 import SwiftyJSON
+
 class Participante :NSObject{
     
     var idParticipante: String?
     var idEvento: String?
     var idContato: String?
     var resposta: String?
-   
+    
+    var contato:Contato?
+    var evento:Evento?
+    
+    
+    override init() {
+
+    }
+    
     func getParticipante() -> Contato?{
         return nil
     }
@@ -31,6 +40,7 @@ class Participante :NSObject{
         
         if let value = data["idContato"] {
             self.idContato = value as? String
+        
         }
         
         if let value = data["resposta"] {
@@ -51,6 +61,7 @@ class Participante :NSObject{
         
         if let value = data["idContato"].string  {
             self.idContato = value
+          
         }
         
         if let value = data["resposta"].string  {
@@ -76,5 +87,6 @@ class Participante :NSObject{
         return dic as  [String : Any]
     }
     
+        
     
 }

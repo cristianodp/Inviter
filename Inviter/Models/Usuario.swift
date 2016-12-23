@@ -9,55 +9,29 @@
 import Foundation
 import SwiftyJSON
 
-class Usuario: NSObject {
+class Usuario: Person {
 
-    var idUsuario:String?
-    var nome:String?
-    var AvatarUrl:String?
-    var email:String?
-    var fone:String?
     var cordenadaX:Float?
     var cordenadaY:Float?
     var ultimoAcesso:String?
     
-    override init(){
-        
+    override init() {
+        super.init()
     }
     
-    init?(data:[String:Any]){
+    override init?(dataDic:[String:Any]){
         
+        super.init(dataDic: dataDic)
         
-        if let value = data["idUsuario"] {
-            self.idUsuario = value as? String
+        if let value = dataDic["cordenadaX"] {
+            self.cordenadaX = value as? Float
         }
         
-        
-        if let value = data["nome"] {
-            self.nome = value as? String
+        if let value = dataDic["cordenadaY"] {
+            self.cordenadaY = value as? Float
         }
         
-        if let value = data["AvatarUrl"] {
-            self.AvatarUrl = value as? String
-        }
-        
-        if let value = data["email"] {
-            self.email = value as? String
-        }
-        
-        if let value = data["fone"] {
-            self.fone = value as? String
-        }
-        
-        
-        if let value = data["cordenadaX"] {
-            self.cordenadaX = value as? Float ?? 0.0
-        }
-        
-        if let value = data["cordenadaY"] {
-            self.cordenadaY = value as? Float ?? 0.0
-        }
-        
-        if let value = data["ultimoAcesso"] {
+        if let value = dataDic["ultimoAcesso"] {
             self.ultimoAcesso = value as? String
         }
         
@@ -65,64 +39,36 @@ class Usuario: NSObject {
         
     }
 
-    init?(data:JSON){
+    override init?(dataJson:JSON){
         
-        if let value = data["idUsuario"].string {
-            self.idUsuario = value
-        }
+        super.init(dataJson: dataJson)
         
         
-        if let value = data["nome"].string {
-            self.nome = value
-        }
-        
-        if let value = data["AvatarUrl"].string {
-            self.AvatarUrl = value
-        }
-        
-        if let value = data["email"].string {
-            self.email = value
-        }
-        
-        if let value = data["fone"].string {
-            self.fone = value
-        }
-        
-        if let value = data["cordenadaX"].float {
+        if let value = dataJson["cordenadaX"].float {
             self.cordenadaX = value
         }
         
-        if let value = data["cordenadaY"].float {
+        if let value = dataJson["cordenadaY"].float {
             self.cordenadaY = value
         }
         
-        if let value = data["ultimoAcesso"].string {
+        if let value = dataJson["ultimoAcesso"].string {
             self.ultimoAcesso = value
         }
         
     }
     
-    func toDictionary()->  [String : Any]{
+    override func toDictionary()->  [String : Any]{
         
-        let idUsuario = self.idUsuario
-        let nome = self.nome
-        let AvatarUrl = self.AvatarUrl
-        let email = self.email
-        let fone = self.fone
-        let cordenadaX = self.cordenadaX
-        let cordenadaY = self.cordenadaY
-        let ultimoAcesso = self.ultimoAcesso
+        var dic = super.toDictionary()
         
+        let cordenadaX = self.cordenadaX  ?? 0.0
+        let cordenadaY = self.cordenadaY ?? 0.0
+        let ultimoAcesso = self.ultimoAcesso ?? ""
         
-        let dic = [ "idUsuario": idUsuario ?? ""
-            ,"nome": nome ?? ""
-            ,"AvatarUrl": AvatarUrl ?? ""
-            ,"email": email ?? ""
-            ,"fone": fone ?? ""
-            ,"cordenadaX": cordenadaX ?? 0.0
-            ,"cordenadaY": cordenadaY ?? 0.0
-            ,"ultimoAcesso": ultimoAcesso ?? ""
-            ] as [String : Any]
+        dic["cordenadaX"] = cordenadaX
+        dic["cordenadaY"] = cordenadaY
+        dic["ultimoAcesso"] = ultimoAcesso
         
         
         return dic as  [String : Any]

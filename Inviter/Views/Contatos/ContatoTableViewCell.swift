@@ -43,6 +43,7 @@ class ContatoTableViewCell: UITableViewCell {
         contactNameLabel.text = contact.name
         contactEmailLabel.text = contact.email ?? ""
         contactPhoneLabel.text = contact.phone ?? ""
+        
         if let image = contact.image{
             contactImageView.image = image
         }else{

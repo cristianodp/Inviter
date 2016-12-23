@@ -13,25 +13,33 @@ import AddressBook
 import Contacts
 import SwiftyJSON
 
-class Contato: NSObject {
-    var idUsuario:String?
-    var idContato:String?
-    var name: String!
-    var email: String?
-    var phone: String?
+class Contato: Person {
+    
     var image: UIImage?
-    var imageUrl: String?
-  
+    var selected:Bool = false
     
-    
-    init(name: String, email: String?, phone: String?, image: UIImage?) {
-        self.name = name
-        self.email = email
-        self.phone = phone
+    override init() {
+        super.init()
+        
+    }
+   
+    init?(name: String, email: String?, phone: String?, image: UIImage?) {
+        super.init()
+        super.name = name
+        super.email = email
+        super.phone = phone
         self.image = image
       
     }
     
+    override init?(dataDic:[String:Any]) {
+        super.init(dataDic: dataDic)
+    }
+    
+    override init?(dataJson:JSON) {
+        super.init(dataJson: dataJson)
+    }
+   /*
     init?(addressBookEntry: ABRecord) {
         super.init()
         
@@ -62,9 +70,10 @@ class Contato: NSObject {
         }
         
     }
-    
+    */
     @available(iOS 9.0, *)
     init?(cnContact: CNContact) {
+        super.init()
         // name
         if !cnContact.isKeyAvailable(CNContactGivenNameKey) && !cnContact.isKeyAvailable(CNContactFamilyNameKey) { return nil }
         self.name = (cnContact.givenName + " " + cnContact.familyName).trimmingCharacters(in: CharacterSet.whitespaces)
@@ -87,82 +96,4 @@ class Contato: NSObject {
     }
     
     
-    init?(data:[String:Any]){
-        
-        
-        if let value = data["idUsuario"] {
-            self.idUsuario = value as? String
-        }
-        
-        
-        if let value = data["idContato"] {
-            self.idContato = value as? String
-        }
-        
-        if let value = data["name"] {
-            self.name = value as? String
-        }
-        
-        if let value = data["email"] {
-            self.email = value as? String
-        }
-        
-        
-        if let value = data["phone"] {
-            self.phone = value as? String
-        }
-        
-        if let value = data["image"] {
-            self.imageUrl = value as? String
-            self.image = self.image?.loadImage(fromUrl: (value as? String)!)
-        }
-        
-        
-        
-    }
-    
-    init?(data:JSON){
-        
-        if let value = data["idUsuario"].string {
-            self.idUsuario = value
-        }
-        
-        
-        if let value = data["idContato"].string {
-            self.idContato = value
-        }
-        
-        if let value = data["name"].string {
-            self.name = value
-        }
-        
-        if let value = data["email"].string {
-            self.email = value
-        }
-        
-        
-        if let value = data["phone"].string {
-            self.phone = value
-        }
-        
-        if let value = data["image"].string {
-            self.imageUrl = value
-            self.image = self.image?.loadImage(fromUrl: value)
-        }
-        
-    }
-    
-    func toDictionary()->  [String : Any]{
-        
-        
-        let dic = [ "idUsuario": idUsuario!
-            ,"idContato": idContato!
-            ,"name": name
-            ,"email": email!
-            ,"email": imageUrl!
-            ] as [String : Any]
-        
-        
-        return dic as  [String : Any]
-    }
 }

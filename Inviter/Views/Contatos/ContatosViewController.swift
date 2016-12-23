@@ -8,6 +8,8 @@
 
 import UIKit
 import Contacts
+
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     switch (lhs, rhs) {
     case let (l?, r?):
@@ -70,7 +72,7 @@ class ContatosViewController: UIViewController, UITableViewDelegate, UITableView
                             
                             if let filter = contacts?.filter({ (cnt:Contato) -> Bool in
                                 
-                                    if (cnt.name.contains(term)) {
+                                    if (cnt.name?.contains(term))! {
                                         return true
                                     }else{
                                         return false
@@ -186,7 +188,13 @@ class ContatosViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let itemSelected = contacts[indexPath.row]
+        addContato(contato:contacts[indexPath.row])
         
+        
+    }
+    
+    func addContato(contato:Contato){
+    
+    
     }
 }

@@ -11,10 +11,24 @@ import Firebase
 
 
 class EventosControls :NSObject{
+   
+    var ref : FIRDatabaseReference!
+    var refHandler : UInt!
     
+    override init() {
+        ref = FIRDatabase.database().reference()
+    }
     
     func AddEvento(){
     
+    }
+    
+    func AddConvidado(idEvento:String,convidado:Contato){
+        
+        self.ref.child("Eventos").child(idEvento).child("Participantes").child(eventoId).setValue(eventoId)
+        
+        
+        
     }
 
 }

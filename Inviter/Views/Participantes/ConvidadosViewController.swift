@@ -16,12 +16,12 @@ class ConvidadosViewController: UIViewController,UITableViewDelegate,UITableView
     var refHandler : UInt!
     var idEvento:String?
     var Resposta:String?
+    var participantes = [Participante]()
 
     @IBOutlet weak var table: UITableView!
 
 
-    var participantes = [Participante]()
-    var contatos = [Contato]()
+    
     
 
     override func viewDidLoad() {
@@ -48,60 +48,48 @@ class ConvidadosViewController: UIViewController,UITableViewDelegate,UITableView
                        
                         let item = Participante()
                         item.loadValues(data: dic)
-                        if (item.resposta == self.Resposta!){
-                            if let idParticipante = item.idParticipante{
-                                self.addObserver(idParticipante:idParticipante)
+                       
+                        
+                        if (item.resposta?.isEqual(self.Resposta!))! {
+                            if item.idParticipante != nil{
+                                
+                                self.carregaContato(participante: item)
                             }
                         }
-                        
-                      //  list.append(dic)
-                        
-                        
-                        DispatchQueue.main.async {
-                            self.table.reloadData()
-                        }
-                        
                     }
             })
         }
     }
     
-    func addObserver(idParticipante:String){
-        refHandler = ref.child("Contatos").child(idParticipante).observe(.value, with:
+    func carregaContato(participante:Participante){
+       
+        self.refHandler = self.ref.child("Usuarios").child(participante.idContato!).child("Usuario").observe(.value, with:
             { (snapshot) in
                 
                 if let dic = snapshot.value as? [String:Any]
                 {
-                    let item = Contato(data: dic)
-                    
-                    
-                    if let idx = self.participantes.index(where: { (valueFilter:Participante) -> Bool in
-                        return (valueFilter.idParticipante?.isEqual(item?.idContato))! })
-                    {
-                        self.contatos.remove(at: idx)
-                    }
-                    
-                    self.contatos.append(item!)
+                    let item = Contato(dataDic: dic)
+                    participante.contato = item
+                    self.participantes.append(participante)
                     
                     DispatchQueue.main.async {
                         self.table.reloadData()
                     }
-                    
                 }
         })
         
-        
     }
-   
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return participantes.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "convidadosCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "convidadosCell", for: indexPath) as! ConvidadosTableViewCell
         
-        var item = participantes[indexPath.row]
+        let item = self.participantes[indexPath.row]
         
+        cell.configureWithContactEntry(item)
+      
         
         return cell
     }
