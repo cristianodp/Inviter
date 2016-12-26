@@ -15,9 +15,13 @@ class Evento :NSObject{
     var local:String?
     var data:Date?
     var organizadorId:String?
-
     
-    func loadValues(data:[String:Any]){
+    
+    override init() {
+        
+    }
+    
+    init?(data:[String:Any]){
         
         if let value = data["idEvento"] {
             self.idEvento = value as? String
@@ -32,8 +36,16 @@ class Evento :NSObject{
         }
         
         if let value = data["data"] {
-            self.setDataString(dataString: (value as? String)!)
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+     
+            self.data = formatter.date(from: value as! String)!
         }
+        
+        if let value = data["organizadorId"] {
+            self.organizadorId = value as? String
+        }
+        
     
     }
     
@@ -41,7 +53,7 @@ class Evento :NSObject{
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        formatter.date(from: dataString)
+
         self.data = formatter.date(from: dataString)!
     }
     
@@ -60,6 +72,21 @@ class Evento :NSObject{
         }
         
     }
+    
+    func getDateFormated() -> String{
+    
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, d MMM yyyy"
+
+        if let data = self.data{
+            return formatter.string(from: data)
+        }else{
+            return ""
+        }
+    
+    }
+    
+    
     
     
     func getHourString() -> String?{

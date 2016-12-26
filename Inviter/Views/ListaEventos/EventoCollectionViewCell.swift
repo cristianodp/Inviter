@@ -21,6 +21,8 @@ class EventoCollectionViewCell: UICollectionViewCell {
     
     var evento:Evento?
     
+    var fb:FirebaseData = FirebaseData()
+
     func loadRow(evento:Evento){
         self.evento = evento
         
@@ -32,13 +34,50 @@ class EventoCollectionViewCell: UICollectionViewCell {
             localEvento.text = value
         }
         
-        if let value = evento.getDataString() {
-            dataEvento.text = value
-        }
+        dataEvento.text = evento.getDateFormated()
         
         if let value = evento.getHourString() {
             horarioEvento.text = value
         }
+        
+        
+        
+        fb.observeResposta(idEvento: evento.idEvento!, idPessoa: (fb.getUsuarioLogado()?.uid)!) { (snapshot) in
+            
+            
+            
+            if let resp = snapshot.value{
+            
+                if (resp as! String).isEqual("CONVIDADO"){
+                    self.simButton.backgroundColor = nil
+                    self.naoButton.backgroundColor = nil
+                    self.talvezButton.backgroundColor = nil
+                }
+            
+                if (resp as! String).isEqual("TALVEZ"){
+                    self.simButton.backgroundColor = nil
+                    self.naoButton.backgroundColor = nil
+                    self.talvezButton.backgroundColor = UIColor.yellow
+                }
+            
+                if (resp as! String).isEqual("SIM"){
+                    self.simButton.backgroundColor = UIColor.yellow
+                    self.naoButton.backgroundColor = nil
+                    self.talvezButton.backgroundColor = nil
+                    
+                }
+            
+                if (resp as! String).isEqual("NAO"){
+                    self.simButton.backgroundColor = nil
+                    self.naoButton.backgroundColor = UIColor.yellow
+                    self.talvezButton.backgroundColor = nil
+                }
+                
+            }
+            
+            
+        }
+        
         /*
         
         if let value = dic["imagemEvento"]{
@@ -50,13 +89,16 @@ class EventoCollectionViewCell: UICollectionViewCell {
     
     @IBAction func simAction(_ sender: Any) {
         
-    }
-    
-    @IBAction func talvezAction(_ sender: Any) {
+        fb.add(idEvento: (self.evento?.idEvento)!, idPessoa: (fb.getUsuarioLogado()?.uid)!, resposta: "SIM")
         
     }
     
+    @IBAction func talvezAction(_ sender: Any) {
+        fb.add(idEvento: (self.evento?.idEvento)!, idPessoa: (fb.getUsuarioLogado()?.uid)!, resposta: "TALVEZ")
+    }
+    
     @IBAction func naoAction(_ sender: Any) {
+        fb.add(idEvento: (self.evento?.idEvento)!, idPessoa: (fb.getUsuarioLogado()?.uid)!, resposta: "NAO")
         
     }
 

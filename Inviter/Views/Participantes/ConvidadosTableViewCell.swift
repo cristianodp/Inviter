@@ -37,11 +37,11 @@ class ConvidadosTableViewCell: UITableViewCell {
         setCircularAvatar()
     }
     
-    func configureWithContactEntry(_ convidado: Participante) {
-        contactNameLabel.text = convidado.contato?.name
-        contactEmailLabel.text = convidado.contato?.email ?? ""
-        contactPhoneLabel.text = convidado.contato?.phone ?? ""
-        if let image = convidado.contato?.image{
+    func configureWithContactEntry(_ convidado: Convidado) {
+        contactNameLabel.text = convidado.pessoa?.nome
+        contactEmailLabel.text = convidado.pessoa?.email ?? ""
+        contactPhoneLabel.text = convidado.pessoa?.fone ?? ""
+        if let image = convidado.pessoa?.image{
             contactImageView.image = image
         }else{
             contactImageView.image = UIImage(named: "userDefault")

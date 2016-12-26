@@ -7,28 +7,24 @@
 //
 
 import UIKit
-import Firebase
 
-class EventoTableViewController: UITableViewController {
 
-    
+class EventoTableViewController: UITableViewController,ControllerDelegate {
+
     var keyEvento:String?
     var evento:Evento?
-    var participante:Participante?
-    var ref : FIRDatabaseReference!
-    var refHandler : UInt!
-    var hideDadaPicker:Bool = true
-
     
+    var convidados:[Convidado]?
+    
+    var hideDadaPicker:Bool = true
+    
+    var fb:FirebaseData!
 
     @IBOutlet weak var descricaoField: UITextField!
     @IBOutlet weak var dataField: UITextField!
     @IBOutlet weak var dataPicker: UIDatePicker!
     @IBOutlet weak var localField: UITextField!
     @IBOutlet weak var dataPikerCell: UITableViewCell!
-
-
-
 
     @IBOutlet weak var simField: UILabel!
     @IBOutlet weak var talvesField: UILabel!
@@ -37,10 +33,11 @@ class EventoTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        ref = FIRDatabase.database().reference()
+       
         dataPikerCell.isHidden = true
 
+        fb = FirebaseData()
+        
         iniciaObservador()
         
         
@@ -48,33 +45,76 @@ class EventoTableViewController: UITableViewController {
 
     func iniciaObservador(){
         
-        if (FIRAuth.auth()?.currentUser?.uid) != nil{
+        
+        if (fb.getUsuarioLogado()?.uid) != nil{
             if let keyEvento = keyEvento{
-                refHandler = ref.child("Eventos").child(keyEvento).observe(.value , with:
+            
+                fb.observe(idEvento: keyEvento, with:
                     { (snapshot) in
                         
                         if let dic = snapshot.value as? [String:Any]
                         {
-                            let item = Evento()
-                            item.loadValues(data: dic)
+                            let item = Evento(data: dic)
                             
                             self.evento = item
                             
-                            self.carregaTela()
+                            self.carregaDadosEvento()
                             
                             
                         }
                 })
-    
+                
+                
+                fb.observeConvidados(idEvento: keyEvento, with:
+                    { (snapshot) in
+                        
+                        if let dic = snapshot.value as? [String:Any]
+                        {
+                            if let item = Convidado(data: dic){
+                                
+                                if let idx = self.convidados?.index(where: { (convidado:Convidado) -> Bool in
+                                    
+                                    if (convidado.idPessoa?.isEqual(item.idPessoa))!{
+                                        return true
+                                    }else{
+                                        return false
+                                    }
+                                    
+                                }){
+                                    self.convidados?.remove(at: idx)
+                                }
+                                
+                                if self.convidados == nil{
+                                    self.convidados = [Convidado]()
+                                }
+                                self.convidados?.append(item)
+                                
+                                self.carregaConvidadosEvento()
+                            
+                            }
+                            
+                        }
+                })
+
             
             }else{
                 self.evento = Evento()
-
+                
+                self.evento?.idEvento = fb.getNewId()
+                
+                self.convidados = [Convidado]()
+                convidados?.append(Convidado.init(idEvento: (self.evento?.idEvento)!, idPessoa: (fb.getUsuarioLogado()?.uid)!, resposta: "CONVIDADO")!)
+                
+                self.carregaConvidadosEvento()
             }
+            
+            
+            
             
         }
     }
-    func carregaTela(){
+    
+    func carregaDadosEvento(){
         
         
         if let evento = evento{
@@ -92,10 +132,71 @@ class EventoTableViewController: UITableViewController {
         
         }else{
             self.evento = Evento()
+            self.evento?.idEvento = fb.getNewId()
+            
+            self.convidados?.append(Convidado.init(idEvento: (self.evento?.idEvento)! , idPessoa: (fb.getUsuarioLogado()?.uid)!, resposta: "CONVIDADO")!)
         }
     
     }
-
+    
+    
+    
+    func carregaConvidadosEvento(){
+        
+        let sim:[Convidado]? = self.convidados?.filter({ (convidado:Convidado) -> Bool in
+            if (convidado.resposta?.isEqual("SIM"))!{
+                return true
+            }else{
+                return false
+            }
+        })
+        
+        let nao:[Convidado]? = self.convidados?.filter({ (convidado:Convidado) -> Bool in
+            if (convidado.resposta?.isEqual("NAO"))!{
+                return true
+            }else{
+                return false
+            }
+        })
+        
+        
+        let talvez:[Convidado]? = self.convidados?.filter({ (convidado:Convidado) -> Bool in
+            if (convidado.resposta?.isEqual("TALVEZ"))!{
+                return true
+            }else{
+                return false
+            }
+        })
+        
+        let convidado:[Convidado]? = self.convidados?.filter({ (convidado:Convidado) -> Bool in
+            if (convidado.resposta?.isEqual("CONVIDADO"))!{
+                return true
+            }else{
+                return false
+            }
+        })
+        
+        if let count = sim?.count {
+            simField.text = String(count)
+        }else{
+            simField.text = "0"
+        }
+        if let count = talvez?.count {
+            talvesField.text = String(count)
+        }else{
+            talvesField.text = "0"
+        }
+        if let count = nao?.count {
+            naoField.text = String(count)
+        }else{
+            naoField.text = "0"
+        }
+        if let count = convidado?.count {
+            convidadosField.text = String(count)
+        }else{
+            convidadosField.text = "0"
+        }
+    }
     @IBAction func horarioDidEndAction(_ sender: Any) {
         horarioDataPicker(show: false)
     }
@@ -110,7 +211,7 @@ class EventoTableViewController: UITableViewController {
     @IBAction func dataPickerEscolher(_ sender: Any) {
         
         evento?.data = dataPicker.date
-        carregaTela()
+        carregaDadosEvento()
         horarioDataPicker(show: false)
         
     }
@@ -151,12 +252,18 @@ class EventoTableViewController: UITableViewController {
 
     @IBAction func salvarAction(_ sender: Any) {
         
+        if salvarEvento() {
+             AlertSimpleDialog.show(sender:self, title:"Inviter",message: "Atualizado com sucesso!")
+        }
+        
+    }
+    
+    func salvarEvento() -> Bool {
         if let value = descricaoField.text{
             evento?.nome = value
         }else{
             AlertSimpleDialog.show(sender:self, title:"Ops!",message: "Informe a descriçao")
-            return
-            
+            return false
         }
         
         if let value = localField.text{
@@ -164,72 +271,54 @@ class EventoTableViewController: UITableViewController {
             
             do {
                 
-                try salvarEvento()
+                try CompletaDadosEvento()
+                
+                fb.add(evento: evento!, convidados: convidados!)
+                
+                self.dismiss(animated: true, completion: nil)
+                
+           
+                return true
+                
             }catch exceptionErros.INVALID_EVENTO_ID {
                 AlertSimpleDialog.show(sender:self, title:"Ops!",message: "Erro ao gera id do evento")
+                return false
             }catch exceptionErros.INVALID_ORGANIZADOR_ID {
                 AlertSimpleDialog.show(sender:self, title:"Ops!",message: "Erro ao buscar id do organizador")
+                return false
             }
             catch _ {
                 AlertSimpleDialog.show(sender:self, title:"Ops!",message: "Erro ao valvar evento")
+                return false
             }
             
         }else{
             AlertSimpleDialog.show(sender:self, title:"Ops!",message: "Informe o local")
+            return false
             
         }
-
+        
+        
+        
+        
+        
         
     }
     
-    func salvarEvento() throws{
-        
-        
-        try CompletaDadosEvento()
-        
-        AddParticipante()
-                
-        salvandoEventoNoFiferabse()
-        
-    }
     
-    func AddParticipante(){
-        let Usrkey = FIRAuth.auth()?.currentUser?.uid
-        self.participante = Participante()
-        self.participante?.idEvento = evento?.idEvento
-        self.participante?.idContato = Usrkey
-        self.participante?.idParticipante = Usrkey//ref.childByAutoId().key
-        self.participante?.resposta = "CONVIDADO"
-    }
-    
-    
-    func salvandoEventoNoFiferabse(){
-        
-        
-        let eventoId = evento?.idEvento
-        self.ref.child("Eventos").child(eventoId!).setValue(evento?.toDictionary())
-        
-        let Usrkey = FIRAuth.auth()?.currentUser?.uid
-        self.ref.child("Usuarios").child(Usrkey!).child("EventosUsuario").child(eventoId!).setValue(eventoId!)
-
-        let participanteKey = participante?.idParticipante
-        self.ref.child("Eventos").child(eventoId!).child("Participantes").child(participanteKey!).setValue(participante?.toDictionary())
-        
-    
-    //self.ref.child("Participantes").child(userId).child("Eventos").child(keyEvento).
-
-    }
     func CompletaDadosEvento() throws{
         
         try geraIdEvento()
         
         try carregaIdOrganizador()
         
+        
+        
     }
     func geraIdEvento() throws{
         
         if (evento?.idEvento) == nil{
-            let key = ref.childByAutoId().key
+            let key = fb.getNewId()
             evento?.idEvento = key
         }
     }
@@ -237,7 +326,7 @@ class EventoTableViewController: UITableViewController {
     func carregaIdOrganizador() throws {
         
         if (evento?.organizadorId) == nil {
-            if let key:String = FIRAuth.auth()?.currentUser?.uid {
+            if let key:String = fb.getUsuarioLogado()?.uid {
                 evento?.organizadorId = key
             }else{
                 print("Erro ao buscar id do organizador")
@@ -263,36 +352,93 @@ class EventoTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueParticipantesSim" {
+        if salvarEvento() {
             
+        }
+        
+        if segue.identifier == "segueParticipantesSim" {
             let vc = segue.destination as! ConvidadosViewController
             vc.Resposta = "SIM"
-            vc.idEvento = evento?.idEvento
+            vc.evento = evento
             
         }
         if segue.identifier == "segueParticipantesNao" {
             
             let vc = segue.destination as! ConvidadosViewController
             vc.Resposta = "NAO"
-            vc.idEvento = evento?.idEvento
+            vc.evento = evento
             
         }
         if segue.identifier == "segueParticipantesTalvez" {
             
             let vc = segue.destination as! ConvidadosViewController
             vc.Resposta = "TALVEZ"
-            vc.idEvento = evento?.idEvento
+            vc.evento = evento
             
         }
         if segue.identifier == "segueParticipantesConvidado" {
             
             let vc = segue.destination as! ConvidadosViewController
             vc.Resposta = "CONVIDADO"
-            vc.idEvento = evento?.idEvento
+            vc.evento = evento            
+        }
+        if segue.identifier == "segueContatos" {
+            
+            let vc = segue.destination as! ContatosViewController
+            
+            vc.delegate = self
             
         }
+
         
     }
  
+    func contatoDidReturn(contato:Pessoa){
+        
+        fb.observeIndex (fone: (contato.fone!), with:
+            { (snapshot) in
+                
+                if let dic = snapshot.value as? [String:Any]
+                {
+                    
+                    let idPessoa = dic["idPessoa"] as? String
+                    
+                    self.addConvidado(idPessoa:idPessoa!)
+                    
+                }else{
+                    
+                    self.fb.addConvidadoSemUsuario(evento:self.evento!,contato:contato)
+                    
+                }
+                
+        })
+        
+        
+    }
+    
+    func addConvidado(idPessoa:String)
+    {
+        
+        fb.observePessoa(idPessoa: idPessoa, with:
+            { (snapshot) in
+                
+                if let dic = snapshot.value as? [String:Any]
+                {
+                    
+                    let item = Pessoa.init(dataDic: dic)
+                    
+                    let convidado = Convidado.init(idEvento: (self.evento?.idEvento!)!, idPessoa: (item?.id!)!, resposta: "CONVIDADO")
+                    
+                    self.fb.add(convidado: convidado!, evento: self.evento!)
+                    
+                    
+                }
+                
+        })
+        
+    }
+    
+    
+   
 
 }

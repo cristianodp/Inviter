@@ -39,10 +39,10 @@ class ContatoTableViewCell: UITableViewCell {
         setCircularAvatar()
     }
     
-    func configureWithContactEntry(_ contact: Contato) {
-        contactNameLabel.text = contact.name
+    func configureWithContactEntry(_ contact: Pessoa) {
+        contactNameLabel.text = contact.nome
         contactEmailLabel.text = contact.email ?? ""
-        contactPhoneLabel.text = contact.phone ?? ""
+        contactPhoneLabel.text = contact.fone ?? ""
         
         if let image = contact.image{
             contactImageView.image = image

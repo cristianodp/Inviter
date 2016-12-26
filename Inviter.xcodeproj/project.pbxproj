@@ -8,26 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		4E1223D01DF4EE7100B569F0 /* Evento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1223C51DF4EE7100B569F0 /* Evento.swift */; };
-		4E1223D11DF4EE7100B569F0 /* Participante.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1223C61DF4EE7100B569F0 /* Participante.swift */; };
+		4E1223D11DF4EE7100B569F0 /* Convidado.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1223C61DF4EE7100B569F0 /* Convidado.swift */; };
 		4E1223D21DF4EE7100B569F0 /* AlertSimpleDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1223C81DF4EE7100B569F0 /* AlertSimpleDialog.swift */; };
 		4E1223D31DF4EE7100B569F0 /* exceptionErros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1223C91DF4EE7100B569F0 /* exceptionErros.swift */; };
 		4E1223D41DF4EE7100B569F0 /* EventoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1223CC1DF4EE7100B569F0 /* EventoCollectionViewCell.swift */; };
 		4E1223D51DF4EE7100B569F0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1223CD1DF4EE7100B569F0 /* MainViewController.swift */; };
 		4E1223D61DF4EE7100B569F0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1223CF1DF4EE7100B569F0 /* LoginViewController.swift */; };
-		4E1223DB1DF4F73400B569F0 /* Contato.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1223DA1DF4F73400B569F0 /* Contato.swift */; };
 		4E1223E11DF5048200B569F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E1223DF1DF5048200B569F0 /* Main.storyboard */; };
-		4E46A8BD1DF8F37800A96BCE /* EventosControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E46A8BC1DF8F37800A96BCE /* EventosControls.swift */; };
 		4E544DC01DBD9646006C3A2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E544DBF1DBD9646006C3A2D /* AppDelegate.swift */; };
 		4E544DC71DBD9646006C3A2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E544DC61DBD9646006C3A2D /* Assets.xcassets */; };
 		4E544DCA1DBD9646006C3A2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E544DC81DBD9646006C3A2D /* LaunchScreen.storyboard */; };
 		4E8CADD31E0D7F1F0071C36F /* EventoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CADD11E0D7F1F0071C36F /* EventoTableViewController.swift */; };
-		4E8CADD41E0D7F1F0071C36F /* EventoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CADD21E0D7F1F0071C36F /* EventoViewController.swift */; };
+		4E8CADD81E0DB9A30071C36F /* FoneUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CADD71E0DB9A30071C36F /* FoneUtils.swift */; };
+		4E8CAE011E0E13300071C36F /* FirebaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CAE001E0E13300071C36F /* FirebaseData.swift */; };
+		4E8CAE031E0EE12B0071C36F /* protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CAE021E0EE12B0071C36F /* protocols.swift */; };
+		4E8CAE051E0F246C0071C36F /* IndexFone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CAE041E0F246B0071C36F /* IndexFone.swift */; };
+		4E8CAE071E106A480071C36F /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CAE061E106A480071C36F /* LoginTableViewController.swift */; };
 		4ECCB1401E09503700C4F356 /* extensionsFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECCB13F1E09503700C4F356 /* extensionsFile.swift */; };
-		4ECCB1461E0AC21200C4F356 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECCB1451E0AC21200C4F356 /* Usuario.swift */; };
-		4ED5A2E21E0CBE9E009D1165 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5A2E11E0CBE9E009D1165 /* Person.swift */; };
+		4ED5A2E21E0CBE9E009D1165 /* Pessoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5A2E11E0CBE9E009D1165 /* Pessoa.swift */; };
 		4ED5A2F61E0D6760009D1165 /* ContatosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5A2F01E0D6760009D1165 /* ContatosViewController.swift */; };
 		4ED5A2F71E0D6760009D1165 /* ContatoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5A2F11E0D6760009D1165 /* ContatoTableViewCell.swift */; };
-		4ED5A2F81E0D6760009D1165 /* ContatoDigitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5A2F21E0D6760009D1165 /* ContatoDigitsViewController.swift */; };
 		4ED5A2F91E0D6760009D1165 /* ConvidadosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5A2F41E0D6760009D1165 /* ConvidadosTableViewCell.swift */; };
 		4ED5A2FA1E0D6760009D1165 /* ConvidadosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5A2F51E0D6760009D1165 /* ConvidadosViewController.swift */; };
 		4EE7F7EE1DBEEB9B001273FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EE7F7ED1DBEEB9B001273FF /* GoogleService-Info.plist */; };
@@ -37,29 +37,29 @@
 /* Begin PBXFileReference section */
 		4B45B149910183E2DCBA8B7E /* Pods-Inviter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Inviter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Inviter/Pods-Inviter.debug.xcconfig"; sourceTree = "<group>"; };
 		4E1223C51DF4EE7100B569F0 /* Evento.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evento.swift; sourceTree = "<group>"; };
-		4E1223C61DF4EE7100B569F0 /* Participante.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Participante.swift; sourceTree = "<group>"; };
+		4E1223C61DF4EE7100B569F0 /* Convidado.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convidado.swift; sourceTree = "<group>"; };
 		4E1223C81DF4EE7100B569F0 /* AlertSimpleDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertSimpleDialog.swift; sourceTree = "<group>"; };
 		4E1223C91DF4EE7100B569F0 /* exceptionErros.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = exceptionErros.swift; sourceTree = "<group>"; };
 		4E1223CC1DF4EE7100B569F0 /* EventoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventoCollectionViewCell.swift; sourceTree = "<group>"; };
 		4E1223CD1DF4EE7100B569F0 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4E1223CF1DF4EE7100B569F0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		4E1223DA1DF4F73400B569F0 /* Contato.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contato.swift; sourceTree = "<group>"; };
 		4E1223E01DF5048200B569F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E46A8B81DF8EE4500A96BCE /* Inviter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Inviter.entitlements; sourceTree = "<group>"; };
-		4E46A8BC1DF8F37800A96BCE /* EventosControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventosControls.swift; sourceTree = "<group>"; };
 		4E544DBC1DBD9646006C3A2D /* Inviter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inviter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E544DBF1DBD9646006C3A2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E544DC61DBD9646006C3A2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E544DC91DBD9646006C3A2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E544DCB1DBD9646006C3A2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E8CADD11E0D7F1F0071C36F /* EventoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventoTableViewController.swift; sourceTree = "<group>"; };
-		4E8CADD21E0D7F1F0071C36F /* EventoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventoViewController.swift; sourceTree = "<group>"; };
+		4E8CADD71E0DB9A30071C36F /* FoneUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoneUtils.swift; sourceTree = "<group>"; };
+		4E8CAE001E0E13300071C36F /* FirebaseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseData.swift; sourceTree = "<group>"; };
+		4E8CAE021E0EE12B0071C36F /* protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = protocols.swift; sourceTree = "<group>"; };
+		4E8CAE041E0F246B0071C36F /* IndexFone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexFone.swift; sourceTree = "<group>"; };
+		4E8CAE061E106A480071C36F /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
 		4ECCB13F1E09503700C4F356 /* extensionsFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensionsFile.swift; sourceTree = "<group>"; };
-		4ECCB1451E0AC21200C4F356 /* Usuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
-		4ED5A2E11E0CBE9E009D1165 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		4ED5A2E11E0CBE9E009D1165 /* Pessoa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pessoa.swift; sourceTree = "<group>"; };
 		4ED5A2F01E0D6760009D1165 /* ContatosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContatosViewController.swift; sourceTree = "<group>"; };
 		4ED5A2F11E0D6760009D1165 /* ContatoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContatoTableViewCell.swift; sourceTree = "<group>"; };
-		4ED5A2F21E0D6760009D1165 /* ContatoDigitsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContatoDigitsViewController.swift; sourceTree = "<group>"; };
 		4ED5A2F41E0D6760009D1165 /* ConvidadosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvidadosTableViewCell.swift; sourceTree = "<group>"; };
 		4ED5A2F51E0D6760009D1165 /* ConvidadosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvidadosViewController.swift; sourceTree = "<group>"; };
 		4EE7F7ED1DBEEB9B001273FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -83,10 +83,10 @@
 			isa = PBXGroup;
 			children = (
 				4E1223C51DF4EE7100B569F0 /* Evento.swift */,
-				4E1223C61DF4EE7100B569F0 /* Participante.swift */,
-				4E1223DA1DF4F73400B569F0 /* Contato.swift */,
-				4ECCB1451E0AC21200C4F356 /* Usuario.swift */,
-				4ED5A2E11E0CBE9E009D1165 /* Person.swift */,
+				4E1223C61DF4EE7100B569F0 /* Convidado.swift */,
+				4ED5A2E11E0CBE9E009D1165 /* Pessoa.swift */,
+				4E8CAE041E0F246B0071C36F /* IndexFone.swift */,
+				4E8CAE001E0E13300071C36F /* FirebaseData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -97,6 +97,8 @@
 				4E1223C81DF4EE7100B569F0 /* AlertSimpleDialog.swift */,
 				4ECCB13F1E09503700C4F356 /* extensionsFile.swift */,
 				4E1223C91DF4EE7100B569F0 /* exceptionErros.swift */,
+				4E8CADD71E0DB9A30071C36F /* FoneUtils.swift */,
+				4E8CAE021E0EE12B0071C36F /* protocols.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -104,11 +106,11 @@
 		4E1223CA1DF4EE7100B569F0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4E8CADD01E0D7F1F0071C36F /* Evento */,
 				4E1223CE1DF4EE7100B569F0 /* Login */,
 				4E1223CB1DF4EE7100B569F0 /* ListaEventos */,
-				4ED5A2EF1E0D6760009D1165 /* Contatos */,
+				4E8CADD01E0D7F1F0071C36F /* Evento */,
 				4ED5A2F31E0D6760009D1165 /* Participantes */,
+				4ED5A2EF1E0D6760009D1165 /* Contatos */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -126,16 +128,9 @@
 			isa = PBXGroup;
 			children = (
 				4E1223CF1DF4EE7100B569F0 /* LoginViewController.swift */,
+				4E8CAE061E106A480071C36F /* LoginTableViewController.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		4E46A8BB1DF8F34E00A96BCE /* Controls */ = {
-			isa = PBXGroup;
-			children = (
-				4E46A8BC1DF8F37800A96BCE /* EventosControls.swift */,
-			);
-			path = Controls;
 			sourceTree = "<group>";
 		};
 		4E544DB31DBD9646006C3A2D = {
@@ -160,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				4E46A8B81DF8EE4500A96BCE /* Inviter.entitlements */,
-				4E46A8BB1DF8F34E00A96BCE /* Controls */,
 				4E1223C41DF4EE7100B569F0 /* Models */,
 				4E1223C71DF4EE7100B569F0 /* Utils */,
 				4E1223CA1DF4EE7100B569F0 /* Views */,
@@ -178,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				4E8CADD11E0D7F1F0071C36F /* EventoTableViewController.swift */,
-				4E8CADD21E0D7F1F0071C36F /* EventoViewController.swift */,
 			);
 			path = Evento;
 			sourceTree = "<group>";
@@ -187,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				4ED5A2F01E0D6760009D1165 /* ContatosViewController.swift */,
-				4ED5A2F21E0D6760009D1165 /* ContatoDigitsViewController.swift */,
 				4ED5A2F11E0D6760009D1165 /* ContatoTableViewCell.swift */,
 			);
 			path = Contatos;
@@ -365,23 +357,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ED5A2F91E0D6760009D1165 /* ConvidadosTableViewCell.swift in Sources */,
-				4E8CADD41E0D7F1F0071C36F /* EventoViewController.swift in Sources */,
 				4E1223D51DF4EE7100B569F0 /* MainViewController.swift in Sources */,
+				4E8CAE051E0F246C0071C36F /* IndexFone.swift in Sources */,
 				4ED5A2FA1E0D6760009D1165 /* ConvidadosViewController.swift in Sources */,
 				4ED5A2F61E0D6760009D1165 /* ContatosViewController.swift in Sources */,
+				4E8CAE071E106A480071C36F /* LoginTableViewController.swift in Sources */,
 				4E1223D21DF4EE7100B569F0 /* AlertSimpleDialog.swift in Sources */,
 				4E1223D01DF4EE7100B569F0 /* Evento.swift in Sources */,
+				4E8CADD81E0DB9A30071C36F /* FoneUtils.swift in Sources */,
+				4E8CAE031E0EE12B0071C36F /* protocols.swift in Sources */,
 				4E544DC01DBD9646006C3A2D /* AppDelegate.swift in Sources */,
 				4E1223D61DF4EE7100B569F0 /* LoginViewController.swift in Sources */,
 				4E1223D41DF4EE7100B569F0 /* EventoCollectionViewCell.swift in Sources */,
-				4E46A8BD1DF8F37800A96BCE /* EventosControls.swift in Sources */,
-				4E1223D11DF4EE7100B569F0 /* Participante.swift in Sources */,
-				4ED5A2E21E0CBE9E009D1165 /* Person.swift in Sources */,
+				4E1223D11DF4EE7100B569F0 /* Convidado.swift in Sources */,
+				4ED5A2E21E0CBE9E009D1165 /* Pessoa.swift in Sources */,
 				4E8CADD31E0D7F1F0071C36F /* EventoTableViewController.swift in Sources */,
-				4ECCB1461E0AC21200C4F356 /* Usuario.swift in Sources */,
-				4ED5A2F81E0D6760009D1165 /* ContatoDigitsViewController.swift in Sources */,
+				4E8CAE011E0E13300071C36F /* FirebaseData.swift in Sources */,
 				4ED5A2F71E0D6760009D1165 /* ContatoTableViewCell.swift in Sources */,
-				4E1223DB1DF4F73400B569F0 /* Contato.swift in Sources */,
 				4E1223D31DF4EE7100B569F0 /* exceptionErros.swift in Sources */,
 				4ECCB1401E09503700C4F356 /* extensionsFile.swift in Sources */,
 			);

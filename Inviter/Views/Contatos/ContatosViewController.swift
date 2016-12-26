@@ -38,14 +38,15 @@ class ContatosViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var noContactsLabel: UILabel!
     @IBOutlet weak var searchControll: UISearchBar!
     
+    var delegate:ControllerDelegate!
     
     // data
     var contactStore = CNContactStore()
-    var contacts = [Contato]()
+    var contacts = [Pessoa]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         //tableView.register(UINib(nibName: "ContatoTableViewCell", bundle: nil), forCellReuseIdentifier: "ContactTableViewCell")
     }
     
@@ -70,9 +71,9 @@ class ContatosViewController: UIViewController, UITableViewDelegate, UITableView
                     if success && contacts?.count > 0 {
                         if let term = term{
                             
-                            if let filter = contacts?.filter({ (cnt:Contato) -> Bool in
+                            if let filter = contacts?.filter({ (cnt:Pessoa) -> Bool in
                                 
-                                    if (cnt.name?.contains(term))! {
+                                    if (cnt.nome?.contains(term))! {
                                         return true
                                     }else{
                                         return false
@@ -135,14 +136,14 @@ class ContatosViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    func retrieveContacts(_ completion: (_ success: Bool, _ contacts: [Contato]?) -> Void) {
-        var contacts = [Contato]()
+    func retrieveContacts(_ completion: (_ success: Bool, _ contacts: [Pessoa]?) -> Void) {
+        var contacts = [Pessoa]()
         do {
             
             let contactsFetchRequest = CNContactFetchRequest ( keysToFetch: [CNContactGivenNameKey as CNKeyDescriptor, CNContactFamilyNameKey as CNKeyDescriptor, CNContactImageDataKey as CNKeyDescriptor, CNContactImageDataAvailableKey as CNKeyDescriptor, CNContactPhoneNumbersKey as CNKeyDescriptor, CNContactEmailAddressesKey as CNKeyDescriptor] )
             
             try contactStore.enumerateContacts(with: contactsFetchRequest, usingBlock: { (cnContact, error) in
-                if let contact = Contato(cnContact: cnContact) { contacts.append(contact) }
+                if let contact = Pessoa(cnContact: cnContact) { contacts.append(contact) }
             })
             
             completion(true, contacts)
@@ -153,24 +154,8 @@ class ContatosViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
-    @IBAction func goBack(_ sender: AnyObject) {
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func createNewContact(_ sender: AnyObject) {
-        self.performSegue(withIdentifier: "CreateContact", sender: sender)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       // if let dvc = segue.destination as? CreateContactViewController {
-       //     dvc.type = .cnContact
-      //  }
-    }
     
     // UITableViewDataSource && Delegate methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -187,14 +172,15 @@ class ContatosViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = contacts[indexPath.row]
         
-        addContato(contato:contacts[indexPath.row])
+        delegate.contatoDidReturn(contato: item)
+        
+        self.dismiss(animated: true, completion: nil)
         
         
     }
     
-    func addContato(contato:Contato){
     
     
-    }
 }

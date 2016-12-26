@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Inviter/Utils/extensionsFile.swift"
-            timestampString = "504015221.966983"
+            timestampString = "504249893.767729"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "loadImage(fromUrl:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -156,6 +156,22 @@
             startingLineNumber = "189"
             endingLineNumber = "189"
             landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Inviter/Controls/EventosControls.swift"
+            timestampString = "504208457.05512"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "AddEvento(evento:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
