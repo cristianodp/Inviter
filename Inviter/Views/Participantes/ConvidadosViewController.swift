@@ -19,6 +19,8 @@ class ConvidadosViewController: UIViewController,UITableViewDelegate,UITableView
     var Resposta:String?
     var convidados = [Convidado]()
     var fb:FirebaseData!
+
+    @IBOutlet weak var labelNoDataFound: UILabel!
     
     @IBOutlet weak var table: UITableView!
 
@@ -27,8 +29,29 @@ class ConvidadosViewController: UIViewController,UITableViewDelegate,UITableView
         super.viewDidLoad()
         fb = FirebaseData()
         fetchRows()
-
+        
+        
+        if (Resposta?.isEqual("SIM"))!{
+            self.title = "Aceito"
+        }
+        
+        if (Resposta?.isEqual("NAO"))!{
+            self.title = "Não Aceito"
+        }
+        
+        if (Resposta?.isEqual("TALVEZ"))!{
+            self.title = "Talvez"
+        }
+        
+        if (Resposta?.isEqual("CONVIDADO"))!{
+            self.title = "Não Respondido"
+        }
+        
+        
+       
     }
+    
+  
     
     func fetchRows(){
        
@@ -41,7 +64,7 @@ class ConvidadosViewController: UIViewController,UITableViewDelegate,UITableView
         if let idEvento = evento?.idEvento{
             fb.observeConvidados(idEvento: idEvento, with:
                 { (snapshot) in
-                    
+                    self.labelNoDataFound.isHidden = false
                     if let dic = snapshot.value as? [String:Any]
                     {
                        
@@ -50,6 +73,7 @@ class ConvidadosViewController: UIViewController,UITableViewDelegate,UITableView
                         if (item?.resposta?.isEqual(self.Resposta!))! {
                             
                             self.CarregaPessoa(convidado: item!)
+                            self.labelNoDataFound.isHidden = true
                         }
                     }
             })

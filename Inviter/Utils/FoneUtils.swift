@@ -25,7 +25,15 @@ struct structFone {
 }
 
 class FoneUtils:NSObject{
-
+    
+    static func isValid(fone:String)->Bool{
+        if fone.characters.count >= 13{
+            return true
+        }else{
+            return false
+        }
+    }
+    
     static func NumeroFone(fone:String) -> structFone {
         
         var numeroFone = fone.replacingOccurrences(of: "-", with: "").replacingOccurrences(of: " ", with: "").replacingOccurrences(of: ".", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: " ", with: "")

@@ -20,6 +20,10 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        let nav = self.navigationController?.navigationBar
+        nav?.tintColor = UIColor.white
+        nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
         fb = FirebaseData()
                 
         self.hideKeyboard()
@@ -77,23 +81,39 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
                     {
                         
                         let item = Evento(data: dic["Evento"] as! [String : Any])
-                        /*
-                        if let idx = self.evetos.index(where: { (eventoFilter:Evento) -> Bool in
-                            return (eventoFilter.idEvento?.isEqual(item?.idEvento))! })
-                        {
-                            self.evetos.remove(at: idx)
-                        }
-                        */
+                        
                         self.evetos.append(item!)
                         
                         DispatchQueue.main.async {
                             self.table.reloadData()
-                        }
-
-                        
-                        
+                        }                        
                     }
             })
+            
+            fb.observeEventosChanged(idPessoa: userId, with:
+                { (snapshot) in
+                    
+                    if let dic = snapshot.value as? [String:Any]
+                    {
+                        
+                        let item = Evento(data: dic["Evento"] as! [String : Any])
+                        //if !item?.isOldest()
+                        if self.evetos.count > 0 {
+                            if let idx = self.evetos.index(where: { (eventoFilter:Evento) -> Bool in
+                                return (eventoFilter.idEvento?.isEqual(item?.idEvento))! })
+                            {
+                                self.evetos[ idx]  = item!
+                            }
+                        }
+                        //self.evetos.append(item!)
+                        
+                        DispatchQueue.main.async {
+                            self.evetos.sort(by: { $0.data! > $1.data! })
+                            self.table.reloadData()
+                        }
+                    }
+            })
+
         }
     }
     
@@ -151,4 +171,21 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
         chamaTelaLogin(mySender: self)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+      
+        
+        
+    }
+  /*
+    func teste(){
+    
+        
+            fb.add(idEvento: (self.evento?.idEvento)!, idPessoa: (fb.getUsuarioLogado()?.uid)!, resposta: "SIM")
+        
+            fb.add(idEvento: (self.evento?.idEvento)!, idPessoa: (fb.getUsuarioLogado()?.uid)!, resposta: "TALVEZ")
+       
+        fb.add(idEvento: (self.evento?.idEvento)!, idPessoa: (fb.getUsuarioLogado()?.uid)!, resposta: "NAO")
+    }
+      */
 }

@@ -22,5 +22,5 @@ target 'Inviter' do
     pod 'ReachabilitySwift', '~> 3'
     #pod 'ContactsPicker'
     # pod 'SwiftAddressBook'
-    
+    pod 'SwiftSVG'
 end

@@ -44,7 +44,7 @@ class FirebaseData{
     
     func add(idEvento:String,idPessoa:String, resposta:String ){
         
-        ref.child("AppData").child("Eventos").child(idEvento).child("Convidados").child(idPessoa).setValue(resposta, forKey: "resposta")
+        ref.child("AppData").child("Eventos").child(idEvento).child("Convidados").child(idPessoa).child("resposta").setValue(resposta)
         
     }
     
@@ -54,7 +54,11 @@ class FirebaseData{
         ref.child("AppData").child("indexesFone").child(fone).child("indexFone").setValue(index?.toDictionary())
     }
     
-    
+    func observeEventosWhere(idPessoa:String,with: @escaping (FIRDataSnapshot)->Void ){
+        
+        ref.child("AppData").child("Pessoas").child(idPessoa).child("Eventos").observe(.childAdded, with: with)
+        
+    }
     
     func observeEventos(idPessoa:String,with: @escaping (FIRDataSnapshot)->Void ){
         
@@ -62,6 +66,11 @@ class FirebaseData{
         
     }
     
+    func observeEventosChanged(idPessoa:String,with: @escaping (FIRDataSnapshot)->Void ){
+        
+        ref.child("AppData").child("Pessoas").child(idPessoa).child("Eventos").observe(.childChanged, with: with)
+        
+    }
     
     
     func observePessoa(idPessoa:String, with: @escaping (FIRDataSnapshot)->Void ){
@@ -76,8 +85,7 @@ class FirebaseData{
         ref.child("AppData").child("Eventos").child(idEvento).child("Evento").observe(.value, with: with)
         
     }
-    
-    
+       
     func observeConvidados(idEvento:String, with: @escaping (FIRDataSnapshot)->Void ){
         
         ref.child("AppData").child("Eventos").child(idEvento).child("Convidados").observe(.childAdded, with: with)
@@ -146,6 +154,14 @@ class FirebaseData{
         })
     }
     
+    
+    func logOutFirebase(){
+        do{
+           try FIRAuth.auth()?.signOut()
+        }catch _ {
+        
+        }
+    }
     
     
     

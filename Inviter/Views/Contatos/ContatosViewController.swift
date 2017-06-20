@@ -171,12 +171,22 @@ class ContatosViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = contacts[indexPath.row]
         
-        delegate.contatoDidReturn(contato: item)
+        AlertSimpleDialog.showChoce(sender: self, title: "Adicionar", message: "Deseja adicionar o contato selecionado ao evento?") { (UIAlertAction) in
+            if !FoneUtils.isValid(fone: item.fone!){
+                AlertSimpleDialog.show(sender: self, title: "Ops!", message: "O formato do numéro não atende os requisitos. Exemplo +55(51)00000-0000")
+                return
+            }
+            
+            self.delegate.contatoDidReturn(contato: item)
+            
+            self.dismiss(animated: true, completion: nil)
+
+        }
         
-        self.dismiss(animated: true, completion: nil)
         
         
     }

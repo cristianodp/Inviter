@@ -26,4 +26,14 @@ class AlertSimpleDialog{
         sender.present(alertController, animated: true, completion: nil)
         
     }
+    
+    static func showChoce( sender :UIViewController, title:String,message:String,handler:((UIAlertAction) -> Void)?){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "Sim", style: .default, handler:handler )
+        let negativeAction = UIAlertAction(title: "Não", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        alertController.addAction(negativeAction)
+        sender.present(alertController, animated: true, completion: nil)
+        
+    }
 }

@@ -23,6 +23,30 @@ class EventoCollectionViewCell: UICollectionViewCell {
     
     var fb:FirebaseData = FirebaseData()
 
+    @IBAction func simAction(_ sender: Any) {
+        let idEvento = self.evento?.idEvento
+        let idPessoa = fb.getUsuarioLogado()?.uid
+        
+        fb.add(idEvento: idEvento!, idPessoa: idPessoa!, resposta: "SIM")
+    }
+    
+    @IBAction func talvezAction(_ sender: Any) {
+        let idEvento = self.evento?.idEvento
+        let idPessoa = fb.getUsuarioLogado()?.uid
+        
+        fb.add(idEvento: idEvento!, idPessoa: idPessoa!, resposta: "TALVEZ")
+
+    }
+    
+    
+    @IBAction func naoAction(_ sender: Any) {
+        let idEvento = self.evento?.idEvento
+        let idPessoa = fb.getUsuarioLogado()?.uid
+        
+        fb.add(idEvento: idEvento!, idPessoa: idPessoa!, resposta: "NAO")
+
+    }
+
     func loadRow(evento:Evento){
         self.evento = evento
         
@@ -40,6 +64,12 @@ class EventoCollectionViewCell: UICollectionViewCell {
             horarioEvento.text = value
         }
         
+        if evento.isOldest(){
+            
+            self.alpha = 0.5
+        }else{
+           self.alpha = 1.0
+        }
         
         
         fb.observeResposta(idEvento: evento.idEvento!, idPessoa: (fb.getUsuarioLogado()?.uid)!) { (snapshot) in
@@ -78,27 +108,6 @@ class EventoCollectionViewCell: UICollectionViewCell {
             
         }
         
-        /*
-        
-        if let value = dic["imagemEvento"]{
-            imagemEvento.image =  .text = value
-        }
-         */
-        
-    }
-    
-    @IBAction func simAction(_ sender: Any) {
-        
-        fb.add(idEvento: (self.evento?.idEvento)!, idPessoa: (fb.getUsuarioLogado()?.uid)!, resposta: "SIM")
-        
-    }
-    
-    @IBAction func talvezAction(_ sender: Any) {
-        fb.add(idEvento: (self.evento?.idEvento)!, idPessoa: (fb.getUsuarioLogado()?.uid)!, resposta: "TALVEZ")
-    }
-    
-    @IBAction func naoAction(_ sender: Any) {
-        fb.add(idEvento: (self.evento?.idEvento)!, idPessoa: (fb.getUsuarioLogado()?.uid)!, resposta: "NAO")
         
     }
 

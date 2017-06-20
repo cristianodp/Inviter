@@ -73,6 +73,33 @@ class Evento :NSObject{
         
     }
     
+    func isOldest()->Bool
+    {
+        if let data = data{
+            
+            if data >= Date() {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    func getDataTime() -> String?{
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMddHHmmss"
+        //"EEEE MMMM dd, aaaa 'at' HH:mm um zz"
+        //formatter.date(from: dataString)
+        //formatter.date(from: dataString)!
+        if let data = self.data{
+            return formatter.string(from: data)
+        }else{
+            return nil
+        }
+        
+    }
+    
     func getDateFormated() -> String{
     
         let formatter = DateFormatter()
@@ -129,12 +156,14 @@ class Evento :NSObject{
         let nome = self.nome!
         let local = self.local!
         let data:String = getDataString()!
+        let datatime:String = getDataTime()!
         let organizadorId:String = self.organizadorId!
 
         let dic = [ "idEvento": id
             ,"nome": nome
             ,"local": local
             ,"data": data
+            ,"datatime": datatime
             ,"organizadorId": organizadorId
 
             ] as [String : Any]

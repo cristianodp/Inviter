@@ -172,6 +172,16 @@ class LoginTableViewController: UITableViewController {
         
     }
     
+    @IBAction func voltarAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func logoutAction(_ sender: Any) {
+        Digits.sharedInstance().logOut()
+        fb.logOutFirebase()
+        loginDigits()
+        
+    }
     func gravarUsuario() throws{
         
         if let value = nomeUsuario.text {

@@ -21,7 +21,15 @@ extension String {
     }
     
     func index(from: Int) -> Index {
-        return self.index(startIndex, offsetBy: from)
+        if from < 0 {
+            return self.index(from: 0)
+        }
+        do{
+            let ret = try self.index(startIndex, offsetBy: from)
+            return ret
+        }catch{
+            return self.index(from: 0)
+        }
     }
     
     func substring(from: Int) -> String {
